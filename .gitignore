@@ -1,0 +1,5 @@
+# Visual Studio Environment
+\.vs
+\bin
+\obj
+.suo
