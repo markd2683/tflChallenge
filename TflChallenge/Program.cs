@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -16,20 +17,20 @@ namespace TflChallenge
         {
             var id = args[0];
 
-            var response = callRoadApi(id).GetAwaiter().GetResult();
-            Console.WriteLine(response.DisplayName);
+            var roadCorridor = callRoadApi(id).GetAwaiter().GetResult();
+            Console.WriteLine(roadCorridor.DisplayName);
             Console.ReadLine();
         }
 
         static async Task<RoadCorridor> callRoadApi(string id)
         {
-            client.BaseAddress = new Uri($"https://api.tfl.gov.uk/Road/");
+            client.BaseAddress = new Uri($"{ConfigurationManager.AppSettings["ApiBaseUrl"]}Road/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var app_id = "";
-            var app_key = "";
+            var app_id = ConfigurationManager.AppSettings["app_id"];
+            var app_key = ConfigurationManager.AppSettings["app_key"];
 
             var response = await client.GetAsync($"{id}?app_id={app_id}&app_key={app_key}");
 
