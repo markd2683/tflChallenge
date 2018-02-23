@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Configuration;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Tfl.Api.Presentation.Entities;
+using TflChallenge.API;
 
 namespace TflChallenge
 {
@@ -24,15 +23,9 @@ namespace TflChallenge
 
         static async Task<RoadCorridor> callRoadApi(string id)
         {
-            client.BaseAddress = new Uri($"{ConfigurationManager.AppSettings["ApiBaseUrl"]}Road/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
+            var roadApi = new RoadApi(client);
 
-            var app_id = ConfigurationManager.AppSettings["app_id"];
-            var app_key = ConfigurationManager.AppSettings["app_key"];
-
-            var response = await client.GetAsync($"{id}?app_id={app_id}&app_key={app_key}");
+            var response = await roadApi.GetRoadById(id);
 
             var result = await response.Content.ReadAsStringAsync();
             var roadCorridors = JsonConvert.DeserializeObject<RoadCorridor[]>(result);
