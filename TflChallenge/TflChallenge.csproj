@@ -52,8 +52,12 @@
   <ItemGroup>
     <Compile Include="API\IRoadApi.cs" />
     <Compile Include="API\RoadApi.cs" />
+    <Compile Include="Models\RoadStatus.cs" />
+    <Compile Include="Models\RoadStatusResponse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IRoadService.cs" />
+    <Compile Include="Services\RoadService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

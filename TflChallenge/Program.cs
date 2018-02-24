@@ -1,10 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Linq;
+﻿using System;
 using System.Net.Http;
-using System.Threading.Tasks;
-using Tfl.Api.Presentation.Entities;
 using TflChallenge.API;
+using TflChallenge.Services;
 
 namespace TflChallenge
 {
@@ -16,20 +13,13 @@ namespace TflChallenge
         {
             var id = args[0];
 
-            var roadCorridor = callRoadApi(id).GetAwaiter().GetResult();
-            Console.WriteLine(roadCorridor.DisplayName);
+            var api = new RoadApi(client);
+            var roadService = new RoadService(api);
+
+            var response = roadService.GetRoadStatusById(id).GetAwaiter().GetResult();
+
+            Console.WriteLine(response.RoadDisplayName);
             Console.ReadLine();
-        }
-
-        static async Task<RoadCorridor> callRoadApi(string id)
-        {
-            var roadApi = new RoadApi(client);
-
-            var response = await roadApi.GetRoadById(id);
-
-            var result = await response.Content.ReadAsStringAsync();
-            var roadCorridors = JsonConvert.DeserializeObject<RoadCorridor[]>(result);
-            return roadCorridors.FirstOrDefault();
         }
     }
 }
