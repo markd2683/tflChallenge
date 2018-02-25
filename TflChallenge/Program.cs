@@ -31,7 +31,7 @@ namespace TflChallenge
                 Environment.Exit((int)ExitCode.Error_EntityNotFound);
             }
 
-            Console.WriteLine($"The status of the {response.RoadId} is as follows");
+            Console.WriteLine($"The status of the {response.RoadDisplayName} is as follows");
             Console.WriteLine($"\t Road Status is {response.RoadStatus.StatusSeverity}");
             Console.WriteLine($"\t Road Status Description is {response.RoadStatus.StatusSeverityDescription}");
             Environment.Exit((int)ExitCode.Success);
