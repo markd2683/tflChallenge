@@ -6,7 +6,7 @@
 
         public string RoadDisplayName { get; set; }
 
-        public RoadStatus Status { get; set; }
+        public RoadStatus RoadStatus { get; set; }
 
         public bool Success { get; set; }
 

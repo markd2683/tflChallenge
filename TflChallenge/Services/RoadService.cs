@@ -37,7 +37,7 @@ namespace TflChallenge.Services
                     var roadCorridor = allRoadCorridors.FirstOrDefault();
 
                     result.RoadDisplayName = roadCorridor.DisplayName;
-                    result.Status = new RoadStatus()
+                    result.RoadStatus = new RoadStatus()
                     {
                         StatusSeverity = roadCorridor.StatusSeverity,
                         StatusSeverityDescription = roadCorridor.StatusSeverityDescription

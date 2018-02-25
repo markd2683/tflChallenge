@@ -60,7 +60,7 @@ namespace TflChallenge.Tests
             var result = service.GetRoadStatusById("validRoad").GetAwaiter().GetResult();
 
             //Assert
-            Assert.AreEqual("Good", result.Status.StatusSeverity);
+            Assert.AreEqual("Good", result.RoadStatus.StatusSeverity);
         }
 
         //Given a valid road ID is specified
@@ -77,7 +77,7 @@ namespace TflChallenge.Tests
             var result = service.GetRoadStatusById("validRoad").GetAwaiter().GetResult();
 
             //Assert
-            Assert.AreEqual("No Exceptional Delays", result.Status.StatusSeverityDescription);
+            Assert.AreEqual("No Exceptional Delays", result.RoadStatus.StatusSeverityDescription);
         }
 
         //Given an invalid road ID is specified
@@ -111,7 +111,7 @@ namespace TflChallenge.Tests
             var result = service.GetRoadStatusById("invalidRoad").GetAwaiter().GetResult();
 
             //Assert
-            Assert.IsNull(result.Status);
+            Assert.IsNull(result.RoadStatus);
         }
 
         //Given the API returns an unexpected HTTP Status
