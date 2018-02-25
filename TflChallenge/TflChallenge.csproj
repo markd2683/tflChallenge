@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Tfl.Api.Presentation.Entities, Version=0.0.0.3382, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Users\Mark\Desktop\Tfl.Api.Presentation.Entities.dll</HintPath>
+      <HintPath>..\references\Tfl.Api.Presentation.Entities.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
