@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="API\IRoadApi.cs" />
     <Compile Include="API\RoadApi.cs" />
+    <Compile Include="Models\ExitCode.cs" />
     <Compile Include="Models\RoadStatus.cs" />
     <Compile Include="Models\RoadStatusResponse.cs" />
     <Compile Include="Program.cs" />
